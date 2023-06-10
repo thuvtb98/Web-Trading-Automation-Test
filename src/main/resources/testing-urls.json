@@ -1,0 +1,9 @@
+{
+  "HOME_PAGE": {
+    "url": "/"
+  },
+
+  "LOGIN_PAGE": {
+    "url": "/Account/Login"
+  }
+}
