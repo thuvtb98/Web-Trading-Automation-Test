@@ -15,7 +15,7 @@ public class driverBase {
 
   @BeforeSuite(alwaysRun = true)
   public static void initWebDriverObject(){
-    driverThread = ThreadLocal.withInitial(()->{
+      driverThread = ThreadLocal.withInitial(()->{
       driverFactory webDriverThread = new driverFactory();
       webDriverThreadPool.add(webDriverThread);
       return webDriverThread;
