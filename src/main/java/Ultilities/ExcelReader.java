@@ -39,19 +39,23 @@ public class ExcelReader{
   public String getCellValue(int rowNo, int ColNo){
     Row row = sheet.getRow(rowNo);
     Cell cell = row.getCell(ColNo);
-    String cellValue = "";
-    CellType cellType = cell.getCellType();
 
-    if(cellType.equals(CellType.STRING)) {
-      cellValue = cell.getStringCellValue();
+    if(cell == null){
+      return "";
     }
-
-    if(cellType.equals(CellType.NUMERIC)){
-      NumberFormat numberFormat = new DecimalFormat("#.####");
-      cellValue = String.valueOf(numberFormat.format(cell.getNumericCellValue()));
+    switch (cell.getCellType()) {
+      case STRING:
+        return cell.getStringCellValue();
+      case NUMERIC:
+        NumberFormat numberFormat = new DecimalFormat("#.####");
+        return String.valueOf(numberFormat.format(cell.getNumericCellValue()));
+      case BOOLEAN:
+        return String.valueOf(cell.getBooleanCellValue());
+      case FORMULA:
+        return cell.getCellFormula();
+      default:
+        return "";
     }
-
-    return cellValue;
   }
 
   public int getTotalRow(){ return this.totalRow;};

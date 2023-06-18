@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="797797ae-b361-4550-8b4e-f6e49169ecee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/dataProviderFiles/LoginData.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Ultilities/ExcelReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/pages/loginPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Ultilities/DataProviderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/pages/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/dataProviderFiles/LoginData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/dataProviderFiles/LoginData.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Driver/driverBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Driver/driverBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/testSuites/Login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/testSuites/Login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tests/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tests/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ultilities/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ultilities/ExcelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ultilities/URL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ultilities/URL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/pages/loginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/pages/LoginPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/dataProviderFiles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Test-Practice-2" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
@@ -100,13 +101,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="login" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="HDSWebTrading" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.login" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.LaunchBrowser" />
       <item itemvalue="Application.webDriver" />
       <item itemvalue="TestNG.Login" />
+      <item itemvalue="TestNG.login" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.login" />
         <item itemvalue="Application.webDriver" />
         <item itemvalue="Application.LaunchBrowser" />
       </list>
@@ -128,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686425415539</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="thu commit at home">
+      <created>1686589071708</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686589071708</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,5 +173,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="thu commit at home" />
     <option name="LAST_COMMIT_MESSAGE" value="thu commit at home" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/HDSWebTrading$Login.ic" NAME="Login Coverage Results" MODIFIED="1686993767369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

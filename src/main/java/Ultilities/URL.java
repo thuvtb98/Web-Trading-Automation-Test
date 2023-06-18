@@ -17,15 +17,8 @@ public class URL {
 
     try {
       FileInputStream fileInputStream = new FileInputStream(JSON_FILE); // read json file
-      InputStreamReader inputStreamReader =
-          new InputStreamReader(
-              fileInputStream,
-              "UTF-8"); // chuyển đổi dữ liệu dạng byte thành dữ liệu dạng ký tự trong input stream
-                        // khi đọc dữ liệu từ nơi lưu trữ (data source)
-      BufferedReader bufferedReader =
-          new BufferedReader(
-              inputStreamReader); // để đọc văn bản từ luồng đầu vào (như tệp) bằng cách đệm và đọc
-                                  // liền mạch các ký tự, mảng hoặc dòng.
+      InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8"); //chuyển đổi dữ liệu dạng byte thành dữ liệu dạng ký tự trong input stream khi đọc dữ liệu từ nơi lưu trữ (data source)
+      BufferedReader bufferedReader = new BufferedReader(inputStreamReader); //để đọc văn bản từ luồng đầu vào (như tệp) bằng cách đệm và đọc liền mạch các ký tự, mảng hoặc dòng.
 
       Map<String, HashMap> testingUrlData = objectMapper.readValue(bufferedReader, HashMap.class);
       String sitePath = testingUrlData.get(testPage).get("url").toString();
