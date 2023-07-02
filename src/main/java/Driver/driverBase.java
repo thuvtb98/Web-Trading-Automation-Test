@@ -40,7 +40,7 @@ public class driverBase {
     return driverThread.get().getChromeDriver();
   }
 
-  @AfterMethod(alwaysRun = true)
+  @AfterSuite
   public void quitDriver() {
     for (driverFactory driver : webDriverThreadPool) {
       driver.quitDriver();

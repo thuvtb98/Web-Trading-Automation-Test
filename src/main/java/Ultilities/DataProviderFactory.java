@@ -38,6 +38,13 @@ public class DataProviderFactory {
     return LoginData;
   }
 
+  @DataProvider
+  public Object[][] OrderSuccessfullyData() {
+    File excelFileLocation = new File(System.getProperty("user.dir") + "/src/main/dataProviderFiles/" + "LoginData.xlsx");
+    String sheetName = "Sheet3";
+    Object[][] LoginData = createObjectData(sheetName, excelFileLocation);
+    return LoginData;
+  }
 
 
 }

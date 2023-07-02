@@ -15,25 +15,24 @@ import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
 public class login extends driverBase {
-  //  @Test(dataProvider = "PassLoginData", dataProviderClass = DataProviderFactory.class)
-  //  public void LoginWithCorrectCredential(String username, String password, String afacctno){
-  //    WebDriver driver = getChromeDriverInstance();
-  //    String TestUrl = URL.currentTestUrl("LOGIN_PAGE");
-  //    driver.get(TestUrl);
-  //    SoftAssert softAssert = new SoftAssert();
-  //
-  //    LoginPage loginPage = new LoginPage(driver);
-  //    loginPage
-  //        .clearUsername()
-  //        .inputUsername(username)
-  //        .inputPassword(password)
-  //        .clickLoginBtn();
-  //
-  //    HomePage homePage = new HomePage(driver);
-  //    softAssert.assertTrue(homePage.getLogoWebElem().isDisplayed(), "The company's logo is not
-  // displayed!");
-  //    Assert.assertEquals(homePage.selectAf().getFirstSelectedOption().getText(), afacctno);
-  // }
+    @Test(dataProvider = "PassLoginData", dataProviderClass = DataProviderFactory.class)
+    public void LoginWithCorrectCredential(String username, String password, String afacctno){
+      WebDriver driver = getChromeDriverInstance();
+      String TestUrl = URL.currentTestUrl("LOGIN_PAGE");
+      driver.get(TestUrl);
+      SoftAssert softAssert = new SoftAssert();
+
+      LoginPage loginPage = new LoginPage(driver);
+      loginPage
+          .clearUsername()
+          .inputUsername(username)
+          .inputPassword(password)
+          .clickLoginBtn();
+
+      HomePage homePage = new HomePage(driver);
+      softAssert.assertTrue(homePage.getLogoWebElem().isDisplayed(), "The company's logo is not displayed!");
+      Assert.assertEquals(homePage.selectAf().getFirstSelectedOption().getText(), afacctno);
+   }
 
   @Test(dataProvider = "FailLoginData", dataProviderClass = DataProviderFactory.class)
   public void LoginWithInCorrectCredential(String username, String password, String alert)
@@ -55,3 +54,5 @@ public class login extends driverBase {
     Assert.assertEquals(liValue, alert);
     }
 }
+
+
