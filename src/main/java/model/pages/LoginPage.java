@@ -66,4 +66,11 @@ public class LoginPage {
     loginBtnElem().click();
   }
 
+  public void login(String username, String password){
+        clearUsername();
+        inputUsername(username);
+        inputPassword(password);
+        clickLoginBtn();
+  }
+
 }

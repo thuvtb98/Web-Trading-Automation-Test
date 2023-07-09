@@ -15,7 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
 public class login extends driverBase {
-    @Test(dataProvider = "PassLoginData", dataProviderClass = DataProviderFactory.class)
+  @Test(dataProvider = "PassLoginData", dataProviderClass = DataProviderFactory.class)
     public void LoginWithCorrectCredential(String username, String password, String afacctno){
       WebDriver driver = getChromeDriverInstance();
       String TestUrl = URL.currentTestUrl("LOGIN_PAGE");
@@ -52,7 +52,9 @@ public class login extends driverBase {
       liValue = liValue.concat(li.getText());
     }
     Assert.assertEquals(liValue, alert);
+
     }
+
 }
 
 
