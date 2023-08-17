@@ -27,7 +27,8 @@ public class placeOrderForStock extends driverBase {
       String price,
       String BS,
       String priceType,
-      String tradingPass){
+      String tradingPass,
+      String orderresult) throws InterruptedException {
 
     WebDriver driver = getChromeDriverInstance();
     String TestUrl = URL.currentTestUrl("LOGIN_PAGE");
@@ -40,14 +41,6 @@ public class placeOrderForStock extends driverBase {
     HomePage homePage = new HomePage(driver);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getAfSelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getOrderTypeSelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getSymbolSelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getQuantitySelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getPriceSelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getBSSelector()));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getPriceTypeSelector()));
-
     //calculate the number of orders in waiting active tab before place new an order
     int numberOfOrdersBefore = 0;
     for(WebElement elem : homePage.getCheckboxOrderElem()){
@@ -55,16 +48,28 @@ public class placeOrderForStock extends driverBase {
     }
 
     try{
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getAfSelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getOrderTypeSelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getSymbolSelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getQuantitySelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getPriceSelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getBSSelector()));
+    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getPriceTypeSelector()));
     homePage
         .selectAfByValue(af)
         .selectOrderTypeByText(orderType)
-        .inputSymbol(symbol)
+        .inputSymbol(symbol);
+    homePage.getSymbolLabelElem().click();
+    homePage
         .inputQuantity(qtty)
         .inputPrice(price)
         .selectBSByText(BS)
-        .selectPriceTypeByText(priceType)
-        .clickOrderBtn();
+        .selectPriceTypeByText(priceType);
+//    Thread.sleep(2000);
+    homePage.clickOrderBtn();
     }catch (org.openqa.selenium.StaleElementReferenceException ex){
+      homePage.getRefreshSelector().click();
+      Thread.sleep(2000);
       homePage
           .selectAfByValue(af)
           .selectOrderTypeByText(orderType)
@@ -76,23 +81,16 @@ public class placeOrderForStock extends driverBase {
           .clickOrderBtn();
     }
 
-//    String mainWindowHandle = driver.getWindowHandle();
-//    for (String windowHandle : driver.getWindowHandles()) {
-//      if (!windowHandle.equals(mainWindowHandle)) {
-//        driver.switchTo().window(windowHandle);
-//        break;
-//      }
-//    }
     homePage.inputTradingPass(tradingPass);
     homePage.clickConfirmBtn();
     wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getBtnOKSelector()));
     String msg = homePage.getMessageElem().getText();
     homePage.clickBtnOK();
-//    driver.switchTo().window(mainWindowHandle);
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(homePage.getOrderWaitingActiveTabSelector()));
-//    homePage.chooseActiveWaitingOrderTab();
+    homePage.getSymbolLabelElem().click();
 
-    homePage.getRefreshOrderElem().click();
+    homePage.getMatchOrderTabElem().click();
+    homePage.getWaitActiveTabElem().click();
+    Thread.sleep(5000);
 
     int numberOfOrdersAfter = 0;
     for(WebElement elem : homePage.getCheckboxOrderElem()){
@@ -100,7 +98,7 @@ public class placeOrderForStock extends driverBase {
     }
 
     Assert.assertEquals(msg, "Lệnh đặt thành công!");
-    Assert.assertEquals(numberOfOrdersAfter, numberOfOrdersBefore + 1);
+    Assert.assertEquals(numberOfOrdersAfter, numberOfOrdersBefore + 1, "The number of the orders in order list is not accurate");
 
     List<WebElement> ActiveWaitingOrderList = new ArrayList<>();
     ActiveWaitingOrderList.add(homePage.getBSInTabElem());
@@ -110,12 +108,13 @@ public class placeOrderForStock extends driverBase {
     ActiveWaitingOrderList.add(homePage.getQuantityInTabElem());
     ActiveWaitingOrderList.add(homePage.getPriceInTabElem());
 
-    System.out.println("Im tired!");
+    System.out.println("Im tired a little!");
 
     StringBuilder actualOrder = new StringBuilder();
     for(WebElement elem : ActiveWaitingOrderList){
         actualOrder.append(elem.getText()).append(";");
     }
-    System.out.println(actualOrder);
+    Assert.assertEquals(actualOrder.toString(), orderresult, "Actual order not match with expected order");
+
   }
 }

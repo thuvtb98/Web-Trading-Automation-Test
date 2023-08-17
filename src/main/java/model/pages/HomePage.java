@@ -12,16 +12,16 @@ public class HomePage {
   By afSelector = By.id("Acctno");
   By logoutSelector = By.className("btnGreen3");
   By orderTypeSelector = By.xpath("//select[@class='dropdown normal_dropdown_custom' and @id='ordertype']");
-  By symbolSelector = By.id("Symbol");
-  By quantitySelector = By.id("Qtty");
-  By priceSelector = By.id("Price");
+  By symbolSelector = By.xpath("//td[@class='NOrder_td_input']/input[@id='Symbol']");
+  By quantitySelector = By.xpath("//td[@class='NOrder_td_input']/input[@id='Qtty']");
+  By priceSelector = By.xpath("//td[@class='NOrder_td_input']/input[@id='Price']");
   By BSSelector = By.id("Side");
   By priceTypeSelector = By.id("PriceType");
   By orderSelector = By.id("btn_NormalOrder");
   By tradingPassSelector = By.id("TradingPassword_TK");
   By confirmBtnSelector = By.id("preview_advance_order_button_submit");
-  By orderWaitingActiveTabSelector = By.id("tabOrderActive");
-  By refeshOrderSelector = By.xpath("//div[@class='tabOrderActive']//input[@id='orderid']");
+  By orderWaitingActiveTabSelector = By.xpath("//li[@id='tabControlRight_T1']/div[@class='tabOrder']");
+  By refeshOrderSelector = By.xpath("//li[@id='tabControlRight_AT1']//td[2]");
   By bSInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow0')]/td[7]");
   By symbolInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow0')]/td[8]");
   By statusInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow0')]/td[9]");
@@ -29,6 +29,9 @@ public class HomePage {
   By quantityInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow0')]/td[11]");
   By priceInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow0')]/td[12]");
   By checkboxOrderSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow')]/td[1]");
+  By matchOrderTabSelector = By.xpath("//li[@id='tabControlRight_T2']//div[@class='tabOrder']");
+  By refreshSelector = By.xpath("//form[@name='Order']//input[@id='btn_ClearNormalOrder']");
+  By symboyLabelSelector = By.xpath("//td[@class='NOrder_td_lable'][normalize-space()='Mã CK']");
   //  By symbolInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow')]/td[8]");
   //  By statusInTabSelector = By.xpath("//tr[contains(@id, 'NormalOrderGrid_DXDataRow')]/td[9]");
   //  By priceTypeInTabSelector = By.xpath("//tr[contains(@id,
@@ -173,6 +176,18 @@ public class HomePage {
 
   public WebElement getRefreshOrderElem() {
     return driver.findElement(refeshOrderSelector);
+  }
+
+  public WebElement getMatchOrderTabElem(){
+    return driver.findElement(matchOrderTabSelector);
+  }
+
+  public WebElement getRefreshSelector(){
+    return driver.findElement(refreshSelector);
+  }
+
+  public WebElement getSymbolLabelElem(){
+    return driver.findElement(symboyLabelSelector);
   }
 
 //  public List<WebElement> getBSInTabElem() {
