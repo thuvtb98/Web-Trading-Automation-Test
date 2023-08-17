@@ -1,1 +1,0 @@
-{"uuid":"ee0c3b02-efdb-4ac8-8f49-412cfa45eeef","name":"Suite2","children":["7bf35b7f-191e-4b13-a549-a33d824e683d"],"befores":[{"name":"initWebDriverObject","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1688914580018,"stop":1688914580031}],"afters":[],"start":1688914579960,"stop":1688914605905}
